@@ -1,0 +1,1 @@
+"/Applications/wechatwebdevtools.app/Contents/MacOS/cli" cloud functions deploy --e cloud1-0gtj8h5n8aac2df2 --n quickstartFunctions --r --project "/Users/sysy/Desktop/Sysy/WeChat_Program/ultimate_hotpot" --report

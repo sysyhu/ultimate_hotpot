@@ -1,0 +1,47 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/board/index",
+    "pages/personal/index",
+    "pages/create/new"
+  ],
+  "window": {
+    "backgroundColor": "#F6F6F6",
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#F6F6F6",
+    "navigationBarTitleText": "ULTIMATE HOTPOT",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "list": [
+    {
+      "pagePath": "pages/index/index",
+      "text": "首页",
+      "iconPath": "icons/_home.png",
+      "selectedIconPath": "icons/home.png"
+    },
+    {
+      "pagePath": "pages/board/index",
+      "text": "战术板",
+      "iconPath": "icons/_board.png",
+      "selectedIconPath": "icons/board.png"
+    },
+    {
+      "pagePath": "pages/create/new",
+      "text": "创建",
+      "iconPath": "icons/_create.png",
+      "selectedIconPath": "icons/create.png"
+    },
+    {
+      "pagePath": "pages/personal/index",
+      "text": "我的",
+      "iconPath": "icons/_user.png",
+      "selectedIconPath": "icons/user.png"
+    }
+  ],
+  "color": "#cdcdcd",
+  "selectedColor": "#d81e06"
+  },
+  "sitemapLocation": "sitemap.json",
+  "style": "v2"
+}
