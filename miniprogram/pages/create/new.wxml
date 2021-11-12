@@ -1,2 +1,31 @@
-<!--pages/create/new.wxml-->
-<text>pages/create/new.wxml</text>
+<view class="board_banner">
+  <view class="slogan_cover">
+    <view class="slogan" animation="{{animation_slogan}}" style="opacity: {{slogan_opacity}};">Practice Makes Perfect</view>
+  </view>
+  <view class="player_1" animation="{{animation_player_1}}"></view>
+  <view class="player_2" animation="{{animation_player_2}}"></view>
+  <view class="frisbee" animation="{{animation_frisbee}}">HOTPOT</view>
+</view>
+
+<view class="create_a_board {{create_display_none}}">
+  <view class="create_title">战术板</view>
+  <form  catchsubmit="formSubmit">
+    <view class="input_content">
+      <input type="text" name="title" placeholder="战术名称..." />
+    </view>
+    <view class="input_content">
+      <textarea name="description" id="" cols="30" rows="10" placeholder="战术描述..." maxlength="200"></textarea>
+    </view>
+    <button class="submit_button" size="mini" form-type="submit">创建</button>
+  </form>
+</view>
+
+<view class="not_login">
+  <button class="login_button {{button_display_none}}" bindtap="login">登录</button>
+  <view class="{{button_display_none}}">登录后可创建战术板</view>
+</view>
+
+
+
+
+

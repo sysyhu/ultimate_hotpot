@@ -1,0 +1,62 @@
+<view class="grass">
+  <movable-area class="field">
+    <view class="endzone_line endzone_line_1"></view>
+    <view class="endzone_line endzone_line_2"></view>
+    <image class="brick_mark brick_mark_1" src="../../images/brick_mark.png" mode="widthFix"></image>
+    <image class="brick_mark brick_mark_2" src="../../images/brick_mark.png" mode="widthFix"></image>
+    <!-- frisbee -->
+    <movable-view class="frisbee" direction="all" x="{{frisbee_x}}" y="{{frisbee_y}}" bindtouchend="position">HOTPOT</movable-view>
+    <!-- offence -->
+    <movable-view class="offence offence_1" x="{{offence_1_x}}" y="{{offence_1_y}}" direction="all" bindtouchend="position">1</movable-view>
+    <movable-view class="offence offence_2" x="{{offence_2_x}}" y="{{offence_2_y}}" direction="all" bindtouchend="position">2</movable-view>
+    <movable-view class="offence offence_3" x="{{offence_3_x}}" y="{{offence_3_y}}" direction="all" bindtouchend="position">3</movable-view>
+    <movable-view class="offence offence_4" x="{{offence_4_x}}" y="{{offence_4_y}}" direction="all" bindtouchend="position">4</movable-view>
+    <movable-view class="offence offence_5" x="{{offence_5_x}}" y="{{offence_5_y}}" direction="all" bindtouchend="position">5</movable-view>
+    <movable-view class="offence offence_6" x="{{offence_6_x}}" y="{{offence_6_y}}" direction="all" bindtouchend="position">6</movable-view>
+    <movable-view class="offence offence_7" x="{{offence_7_x}}" y="{{offence_7_y}}" direction="all" bindtouchend="position">7</movable-view>
+
+    <!-- defence -->
+    <movable-view class="defence defence_1" x="{{defence_1_x}}" y="{{defence_1_y}}" direction="all" bindtouchend="position">1</movable-view>
+    <movable-view class="defence defence_2" x="{{defence_2_x}}" y="{{defence_2_y}}" direction="all" bindtouchend="position">2</movable-view>
+    <movable-view class="defence defence_3" x="{{defence_3_x}}" y="{{defence_3_y}}" direction="all" bindtouchend="position">3</movable-view>
+    <movable-view class="defence defence_4" x="{{defence_4_x}}" y="{{defence_4_y}}" direction="all" bindtouchend="position">4</movable-view>
+    <movable-view class="defence defence_5" x="{{defence_5_x}}" y="{{defence_5_y}}" direction="all" bindtouchend="position">5</movable-view>
+    <movable-view class="defence defence_6" x="{{defence_6_x}}" y="{{defence_6_y}}" direction="all" bindtouchend="position">6</movable-view>
+    <movable-view class="defence defence_7" x="{{defence_7_x}}" y="{{defence_7_y}}" direction="all" bindtouchend="position">7</movable-view>
+  </movable-area>
+</view> 
+
+<view class="operate_steps">
+  <image class="play" bindtap="play" src="../../images/play.png"></image>
+  <image class="done" bindtap="done" src="../../images/done.png"></image>
+  <image class="reset" bindtap="reset" src="../../images/reset.png"></image>
+</view>
+
+<view class="create_steps">
+  <form catchsubmit="formSubmit">
+    <view class="title">创建步骤</view>
+    <view class="input_content">
+      <input class="input_description" type="text" value="{{step_input_value}}" name="description" placeholder="步骤描述..." />
+      <button class="submit_button" form-type="submit" size="mini">创建</button>
+    </view>
+  </form>
+</view> 
+
+<view class="board_info">
+  <view class="title" wx:if="{{board_title == ''}}">未命名战术板</view>
+  <view class="title">{{board_title}}</view>
+  <view class="description" wx:if="{{board_description == ''}}">还没有战术描述。</view>
+  <view class="description">{{board_description}}</view>
+
+  <view class="step_index">
+    <view class="a_step" wx:for="{{steps}}" wx:key="item">
+      <view class="a_step_description">{{item.a_step}}</view>
+      <image class="play_a_step" bindtap="play_a_step" src="../../images/play.png" data-step_id="{{item.step_id}}"></image>
+      <image class="del_a_step" bindtap="del_a_step" src="../../images/del.png" data-step_id="{{item.step_id}}"></image>
+    </view>
+    <view class="line"></view>
+    <view class="line"></view>
+    <view class="line"></view>
+  </view>
+</view>
+

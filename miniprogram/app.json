@@ -1,9 +1,10 @@
 {
   "pages": [
-    "pages/index/index",
-    "pages/board/index",
-    "pages/personal/index",
-    "pages/create/new"
+    "pages/welcome/welcome",
+    "pages/board/show",
+    "pages/create/new",
+    "pages/step/new",
+    "pages/profile/profile"
   ],
   "window": {
     "backgroundColor": "#F6F6F6",
@@ -15,16 +16,10 @@
   "tabBar": {
     "list": [
     {
-      "pagePath": "pages/index/index",
+      "pagePath": "pages/welcome/welcome",
       "text": "首页",
       "iconPath": "icons/_home.png",
       "selectedIconPath": "icons/home.png"
-    },
-    {
-      "pagePath": "pages/board/index",
-      "text": "战术板",
-      "iconPath": "icons/_board.png",
-      "selectedIconPath": "icons/board.png"
     },
     {
       "pagePath": "pages/create/new",
@@ -33,7 +28,7 @@
       "selectedIconPath": "icons/create.png"
     },
     {
-      "pagePath": "pages/personal/index",
+      "pagePath": "pages/profile/profile",
       "text": "我的",
       "iconPath": "icons/_user.png",
       "selectedIconPath": "icons/user.png"

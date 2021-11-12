@@ -1,0 +1,25 @@
+<view class="userinfo">
+  <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
+  <image class="default_avatar {{display_none}}" src="../../images/happy.png"></image>
+  <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+  <button class="login_button {{display_none}}" bindtap="login"> 登录 </button>
+</view>
+
+<view class="my_content_strench"></view>
+
+<view class="my_content">
+  <view class="my_boards {{my_boards_display_none}}">
+    <view class="title">我的战术板</view>
+    <view class="board_index" wx:for="{{my_boards}}" wx:for-item="item">
+      <view class="a_board">
+        <view class="board_info" data-board_id="{{item.board_id}}" bindtap="show_board">
+          <view class="board_title">{{item.title}}</view>
+          <view class="board_description">{{item.description}}</view>
+        </view>
+        <image src="../../images/del.png" class="del_a_board" data-board_id="{{item.board_id}}" bindtap="del_a_board"></image>
+      </view>
+    </view>
+  </view>
+
+  <view class="not_login {{not_login_display_none}}">未登录</view>
+</view>

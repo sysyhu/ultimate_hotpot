@@ -1,0 +1,26 @@
+<swiper class="ads_banner" autoplay="true" circular="true">
+  <swiper-item><image class="ads_swiper_image" mode="widthFix" src="https://www.discraft.com/content/files/images/PM_SignatureSeries_Header.jpg"></image></swiper-item>
+  <swiper-item><image class="ads_swiper_image" mode="widthFix" src="https://www.discraft.com/content/files/content/Page%20Graphics/Funky-Buzzz-Header.jpg"></image></swiper-item>
+  <swiper-item><image class="ads_swiper_image" mode="widthFix" src="	https://www.discraft.com/content/files/images/Homepage%20Slider/newmandadiscs.jpg"></image></swiper-item>
+</swiper>
+
+<view class="home_page_content_strench"></view>
+
+<view class="home_page_content">
+  <image class="welcome_logo" src="../../images/hotpot.png" mode="widthFix"></image>
+
+  <view class="frisbee" animation="{{animationData}}">HOTPOT</view>
+
+  <view class="most_basic">
+    <view class="title">必备战术</view>
+    <view class="board_index" wx:for="{{boards}}" wx:for-item="item" data-board_id="{{item.board_id}}" bindtap="show_board">
+        <view class="board_title">{{item.title}}</view>
+        <view class="board_description">{{item.description}}</view>
+    </view>
+  </view>
+
+  <view class="best_open">
+    <view class="title">必入赛事</view>
+    <image class="open_image" src="../../images/lingnan.png" mode="widthFix"></image>
+  </view>
+</view>
