@@ -1,11 +1,16 @@
-// pages/board/show.js
+var common = require("../../pages/common.js");
+
 Page({
   data: {
-    eye: "open_eye",
+    // 与步骤演示同步的步骤描述，可关闭不看
     note: "",
     note_display_none: "",
+    // 步骤操作按钮
+    eye: "open_eye",
+    // 战术板信息
     board_title: "",
     board_description: "",
+    // 步骤信息
     steps: [],
     step_input_value: "",
     // frisbee original position
@@ -44,19 +49,21 @@ Page({
   },
 
   onLoad: function(options){
-    console.log(options);
     var that = this;
     var board_id = options.board_id;
     this.board_id = board_id;
+
     wx.request({
-      url: 'http://192.168.31.42:3000/boards/' + board_id,
+      url: common.server_url + '/boards/' + board_id,
       method: 'GET',
       success: function(res){
-        console.log(res);
         var status = JSON.parse(res.data[2]["status"]);
         that.setData({
           board_title: res.data[0].title,
           board_description: res.data[0].description,
+          steps: common.steps(res.data[1]), // 获取步骤, common.js
+          step_input_value: "",
+          note: "Step 1. " + res.data[1][0].description,  // 第一步的描述
           frisbee_x: status.frisbee_x,
           frisbee_y: status.frisbee_y,
           offence_1_x: status.offence_1_x,
@@ -88,47 +95,23 @@ Page({
           defence_7_x: status.defence_7_x,
           defence_7_y: status.defence_7_y,
         })
-        var data = res.data[1];
-        var steps = [];
-        var step_1_description = "Step 1. " + res.data[1][0].description;
-        for(var i=0; i<data.length; i++){
-          var str = "";
-          var step_id = data[i].id;
-          var step_order = i + 1;
-          if(data[i].description == ''){
-            str = "Step " + step_order + ". " + "暂时没有步骤描述。";
-          }else{
-            str = "Step " + step_order + ". " + data[i].description;
-          }
-          steps[i] = {a_step: str, step_id: step_id};
-        };
-        that.setData({
-          steps: steps,
-          step_input_value: "",
-          note: step_1_description
-        });
       }
     })
   },
 
   onShow: function(){
-    wx.hideHomeButton({
-      complete: (res) => {
-        console.log(res);
-      },
-    })
+    wx.hideHomeButton(); // 隐藏左上角"返回"
   },
 
+  // 所有步骤动画演示
   play: function(){
     var that = this;
     wx.request({
-      url: 'http://192.168.31.42:3000/steps/play',
+      url: common.server_url + '/steps/play',
       method: 'POST',
       data: {board_id: this.board_id},
-      // data: {board_id: 1128},
       success: (res)=>{
         var data = res.data;
-        console.log(data);
         var len = data.length;
         var i = 0;
         var interval = 1500;
@@ -137,7 +120,6 @@ Page({
             var status = JSON.parse(data[i]["status"]);
             var step_order = i + 1;
             var description = "Step " + step_order + ". " + data[i].description;
-            console.log(description);
             that.setData({
               note: description,
               note_display: "block",
@@ -179,11 +161,12 @@ Page({
     });
   },
 
+  // 某一步骤动画演示
   play_a_step: function(res){
     var that = this;
     var step_id = res.target.dataset.step_id;
     wx.request({
-      url: 'http://192.168.31.42:3000/steps/play_a_step',
+      url: common.server_url + '/steps/play_a_step',
       method: 'POST',
       data: {step_id: step_id},
       success: function(res){
@@ -228,6 +211,7 @@ Page({
     })
   },
 
+  // 是否隐藏动画演示同步步骤描述
   eye: function(e){
     var that = this;
     if(e.currentTarget.dataset.eye == "open_eye"){
@@ -243,11 +227,10 @@ Page({
     }
   },
 
+  // 跳转至首页
   home: function(){
     wx.switchTab({
-      url: '../../pages/profile/profile',
+      url: '../../pages/welcome/welcome',
     })
   }
-
-
 })

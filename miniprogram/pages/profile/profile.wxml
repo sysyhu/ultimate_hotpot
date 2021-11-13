@@ -5,14 +5,14 @@
   <button class="login_button {{display_none}}" bindtap="login"> 登录 </button>
 </view>
 
-<view class="my_content_strench"></view>
+<view class="main_content_strench"></view>
 
-<view class="my_content">
-  <view class="my_boards {{my_boards_display_none}}">
-    <view class="title">我的战术板</view>
+<view class="main_content">
+  <view class="main_section {{my_boards_display_none}}">
+    <view class="section_title">我的战术板</view>
     <view class="board_index" wx:for="{{my_boards}}" wx:for-item="item">
       <view class="a_board">
-        <view class="board_info" data-board_id="{{item.board_id}}" bindtap="show_board">
+        <view class="show_board" data-board_id="{{item.board_id}}" bindtap="show_board">
           <view class="board_title">{{item.title}}</view>
           <view class="board_description">{{item.description}}</view>
         </view>

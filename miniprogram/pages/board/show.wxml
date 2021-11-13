@@ -32,19 +32,19 @@
 
 <view class="operate_steps">
   <!-- <image class="create" bindtap="create" src="../../images/create.png"></image> -->
-  <image class="play" bindtap="play" src="../../images/play.png"></image>
-  <image class="eye" bindtap="eye" src="../../images/{{eye}}.png" data-eye="{{eye}}"></image>
-  <image class="home" bindtap="home" src="../../images/home.png"></image>
+  <image class="operate_button play" bindtap="play" src="../../images/play.png"></image>
+  <image class="operate_button eye" bindtap="eye" src="../../images/{{eye}}.png" data-eye="{{eye}}"></image>
+  <image class="operate_button home" bindtap="home" src="../../images/home.png"></image>
 </view>
 
 <view class="board_info">
-  <view class="title">{{board_title}}</view>
-  <view class="description">{{board_description}}</view>
+  <view class="board_step_title">{{board_title}}</view>
+  <view class="board_step_description">{{board_description}}</view>
 
   <view class="step_index">
     <view class="a_step" wx:for="{{steps}}" wx:key="item">
       <view class="a_step_description">{{item.a_step}}</view>
-      <image class="play_a_step" bindtap="play_a_step" src="../../images/play.png" data-step_id="{{item.step_id}}"></image>
+      <image class="operate_button play_a_step" bindtap="play_a_step" src="../../images/play.png" data-step_id="{{item.step_id}}"></image>
     </view>
     <view class="line"></view>
     <view class="line"></view>

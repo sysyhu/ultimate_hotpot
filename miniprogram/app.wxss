@@ -1,16 +1,209 @@
 /**app.wxss**/
-.container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  box-sizing: border-box;
-} 
-
-
-
 page {
   background: #f6f6f6;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
+}
+
+/* 一、创建步骤、展示战术板公共样式 */
+/* 场地样式 */
+.grass {
+  width: 100%;
+  height: 1400rpx;
+  background-color: #D1D5B4;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.field {
+  width: 444rpx; 
+  height: 1200rpx;
+  margin-top: 20rpx;
+  margin-bottom: 20rpx;
+  position: relative;
+  background-color: #D1D5B4;
+  overflow-x: hidden;
+  border: 4rpx solid #FAF3EB;
+}
+
+.endzone_line {
+  position: absolute;
+  width: 444rpx; 
+  height: 4rpx;
+  background-color: #FAF3EB;
+}
+
+.endzone_line_1 {
+  top: 216rpx;
+}
+
+.endzone_line_2 {
+  top: 984rpx;
+}
+
+.brick_mark {
+  position: absolute;
+  left: 210rpx;
+  width:24rpx;
+  height: 24rpx;
+}
+
+.brick_mark_1 {
+  top: 420rpx;
+}
+
+.brick_mark_2 {
+  top: 780rpx;
+}
+
+.frisbee {
+  width: 40rpx;
+  height: 40rpx;
+  background-color: white;
+  text-align: center;
+  line-height: 40rpx;
+  color: #d81e06;
+  font-size: 8rpx;
+  border-radius: 50%;
+  font-weight: 700;
+  z-index: 3;
+  box-shadow: 1rpx 1rpx 2rpx 2rpx rgba(0,0,0,0.05);
+}
+
+.offence, .defence{
+  width: 40rpx;
+  height: 40rpx;
+  background-color: #E34F33;
+  text-align: center;
+  line-height: 40rpx;
+  color: white;
+  font-size: 24rpx;
+  box-shadow: 1rpx 1rpx 2rpx 2rpx rgba(0,0,0,0.05);
+}
+
+.defence {
+  background-color: #2B5B6C;
+}
+
+/* 场地侧边步骤操作播放、重置、完成等 */
+.operate_steps {
+  position: absolute;
+  top: 420rpx;
+  left: 20rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.operate_button {
+  width: 70rpx;
+  height: 70rpx;
+  margin-bottom: 20rpx;
+  box-sizing: border-box;
+  background-color: #FFC87E;
+  border-radius: 50%;
+  box-shadow: 1rpx 1rpx 2rpx 2rpx rgba(0,0,0,0.1);
+}
+
+/* 步骤创建、步骤展示板 */
+.create_steps, .board_info {
+  width: 100%;
+  padding: 60rpx;
+  padding-bottom: 200rpx;
+  margin-top: -140rpx;
+  box-sizing: border-box;
+  background-color: #E34F33;
+  border-radius: 60rpx 60rpx 0 0;
+  box-shadow: 2rpx 2rpx 4rpx 4rpx rgba(0,0,0,0.2);
+  display: flex;
+  flex-direction: column;
+}
+
+.board_info {
+  background-color: #2B5B6c;
+  padding-bottom: 100rpx;
+}
+
+.board_step_title {
+  font-weight: 700;
+  font-size: 48rpx;
+  color: white;
+  margin-bottom: 20rpx;
+}
+
+.board_step_description {
+  color: white;
+  margin-bottom: 40rpx;
+}
+
+.line {
+  height: 60rpx;
+  border-bottom: 2rpx solid #41849C;
+}
+
+/* 步骤展示及操作 */
+.a_step {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-bottom: 12rpx;
+}
+
+.a_step_description {
+  width: 500rpx;
+  padding: 10rpx;
+  text-indent: 10rpx;
+  border-radius: 6rpx;
+  background-color: #eeeeee;
+  color: gray;
+  font-size: small;
+  box-sizing: border-box;
+}
+
+/* 二、首页，个人主页公共样式 */
+.main_content_strench {
+  width: 100%;
+  height: 120rpx;
+  margin-top: -120rpx;
+  background-color: #F6F6F6;
+  border-radius: 60rpx 60rpx 0 0;
+  z-index: 1;
+}
+
+.main_content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #F6F6F6;
+}
+
+.main_section {
+  width: 80%;
+  margin-bottom: 40rpx;
+}
+
+.section_title {
+  font-weight: 700;
+  margin-bottom: 20rpx;
+}
+
+.board_index {
+  padding: 20rpx;
+  margin-bottom: 20rpx;
+  border-radius: 8rpx;
+  box-shadow: 2rpx 2rpx 5rpx 5rpx rgba(0,0,0,0.04);
+}
+
+.board_title {
+  color: #d81e06;
+  font-weight: 700;
+  margin-bottom: 10rpx;
+}
+
+.board_description {
+  color: #8a8a8a;
+  font-size: small;
 }

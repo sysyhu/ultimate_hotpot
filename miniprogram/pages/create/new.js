@@ -64,7 +64,6 @@ Page({
       animation_slogan: animation_slogan.export()
     });
 
-    var that = this;
     wx.checkSession({
       success () {
         var user_id = wx.getStorageSync('user_id');

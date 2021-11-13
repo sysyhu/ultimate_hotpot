@@ -1,20 +1,15 @@
-// pages/welcome/welcome.js
-Page({
+var common = require("../../pages/common.js");
 
-  /**
-   * 页面的初始数据
-   */
+Page({
   data: {
     boards: [],
-    animationData: {}
+    fisbee_animation: {}
   },
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onShow: function (options) {
+  onLoad: function (options) {
     var that = this;
    
+    // 飞盘动画
     var animation = wx.createAnimation({
       duration: 2000,
       timingFunction: 'ease',
@@ -22,29 +17,22 @@ Page({
     that.animation = animation;
     animation.rotate(1800).step();
     that.setData({
-      animationData: animation.export()
-    })
+      fisbee_animation: animation.export()
+    });
 
+    // 获取必备战术
     wx.request({
-      url: 'http://192.168.31.42:3000/',
+      url: common.server_url,
       method: 'GET',
       success: (res)=>{
-        var data = res.data;
-        var boards = [];
-        for(var i=0; i<data.length; i++){
-          boards[i] = {
-            title: data[i].title,
-            description: data[i].description,
-            board_id: data[i].id
-          };
-        };
         that.setData({
-          boards: boards
+          boards: common.boards(res.data)
         })
       }
     })
   },
 
+  // 点击查看必备战术
   show_board: function(e){
     var that = this;
     var board_id = e.currentTarget.dataset.board_id;

@@ -205,7 +205,6 @@ Page({
           defence_6_y: this.defence_6_offset_y - this.field_offset_y - 2,
           defence_7_x: this.defence_7_offset_x - this.field_offset_x - 2,
           defence_7_y: this.defence_7_offset_y - this.field_offset_y - 2,
-
       }
     },
       success: (res) => {

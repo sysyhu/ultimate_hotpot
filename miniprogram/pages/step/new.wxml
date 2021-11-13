@@ -27,14 +27,14 @@
 </view> 
 
 <view class="operate_steps">
-  <image class="play" bindtap="play" src="../../images/play.png"></image>
-  <image class="done" bindtap="done" src="../../images/done.png"></image>
-  <image class="reset" bindtap="reset" src="../../images/reset.png"></image>
+  <image class="operate_button play" bindtap="play" src="../../images/play.png"></image>
+  <image class="operate_button done" bindtap="done" src="../../images/done.png"></image>
+  <image class="operate_button reset" bindtap="reset" src="../../images/reset.png"></image>
 </view>
 
 <view class="create_steps">
   <form catchsubmit="formSubmit">
-    <view class="title">创建步骤</view>
+    <view class="board_step_title">创建步骤</view>
     <view class="input_content">
       <input class="input_description" type="text" value="{{step_input_value}}" name="description" placeholder="步骤描述..." />
       <button class="submit_button" form-type="submit" size="mini">创建</button>
@@ -43,16 +43,14 @@
 </view> 
 
 <view class="board_info">
-  <view class="title" wx:if="{{board_title == ''}}">未命名战术板</view>
-  <view class="title">{{board_title}}</view>
-  <view class="description" wx:if="{{board_description == ''}}">还没有战术描述。</view>
-  <view class="description">{{board_description}}</view>
+  <view class="board_step_title">{{board_title}}</view>
+  <view class="board_step_description">{{board_description}}</view>
 
   <view class="step_index">
     <view class="a_step" wx:for="{{steps}}" wx:key="item">
       <view class="a_step_description">{{item.a_step}}</view>
-      <image class="play_a_step" bindtap="play_a_step" src="../../images/play.png" data-step_id="{{item.step_id}}"></image>
-      <image class="del_a_step" bindtap="del_a_step" src="../../images/del.png" data-step_id="{{item.step_id}}"></image>
+      <image class="operate_button play_a_step" bindtap="play_a_step" src="../../images/play.png" data-step_id="{{item.step_id}}"></image>
+      <image class="operate_button del_a_step" bindtap="del_a_step" src="../../images/del.png" data-step_id="{{item.step_id}}"></image>
     </view>
     <view class="line"></view>
     <view class="line"></view>

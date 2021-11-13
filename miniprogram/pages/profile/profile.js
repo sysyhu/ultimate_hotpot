@@ -1,6 +1,6 @@
-// pages/profile/profile.js
-Page({
+var common = require("../../pages/common.js");
 
+Page({
   data: {
     my_boards: [],
     display_none: "",
@@ -47,7 +47,7 @@ Page({
     var user_id = wx.getStorageSync('user_id');
     if(user_id){
       wx.request({
-        url: 'http://192.168.31.42:3000/boards/my_boards',
+        url: common.server_url + '/boards/my_boards',
         method: 'POST',
         data: {user_id: user_id},
         success: function(res){
@@ -88,7 +88,7 @@ Page({
             var user_id = res.code;
             if (res.code) {
               wx.request({
-                url: 'http://192.168.31.42:3000/users',
+                url: common.server_url + '/users',
                 method: 'POST',
                 data: {
                   user_id: res.code,
@@ -124,7 +124,7 @@ Page({
       success: function(res){
         if(res.confirm){
           wx.request({
-            url: 'http://192.168.31.42:3000/boards/' + board_id,
+            url: common.server_url + '/boards/' + board_id,
             method: 'DELETE',
             data: {board_id: board_id},
             success: function(res){
