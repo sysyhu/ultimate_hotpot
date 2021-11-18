@@ -31,11 +31,21 @@ function steps(step_data){
     steps[i] = {a_step: str, step_id: step_id};
   };
   return steps
-}
+};
 
+// 步骤创建页，生成飞盘、队员坐标
+function original_position(x_list, y, name, force_direction){
+  var position_list = [];
+  for(var i=0; i<x_list.length; i++){
+    var num = i + 1;
+    position_list[i] = {num: num, x: x_list[i], y: y, name: name + "_" + num, force_direction: force_direction}
+  }
+  return position_list
+};
 
 module.exports = {
   server_url: server_url,
   boards: boards,
-  steps: steps
+  steps: steps,
+  original_position: original_position,
 }

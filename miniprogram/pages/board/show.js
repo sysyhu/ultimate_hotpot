@@ -13,45 +13,17 @@ Page({
     // 步骤信息
     steps: [],
     step_input_value: "",
-    // frisbee original position
-    frisbee_x: 101,
-    frisbee_y: 290,
-    // offence original position
-    offence_1_x: 11,
-    offence_1_y: 68,
-    offence_2_x: 41,
-    offence_2_y: 68,
-    offence_3_x: 71,
-    offence_3_y: 68,
-    offence_4_x: 101,
-    offence_4_y: 68,
-    offence_5_x: 131,
-    offence_5_y: 68,
-    offence_6_x: 161,
-    offence_6_y: 68,
-    offence_7_x: 191,
-    offence_7_y: 68,
-    // defence original position
-    defence_1_x: 11,
-    defence_1_y: 512,
-    defence_2_x: 41,
-    defence_2_y: 512,
-    defence_3_x: 71,
-    defence_3_y: 512,
-    defence_4_x: 101,
-    defence_4_y: 512,
-    defence_5_x: 131,
-    defence_5_y: 512,
-    defence_6_x: 161,
-    defence_6_y: 512,
-    defence_7_x: 191,
-    defence_7_y: 512,
+    // frisbee players original position
+    frisbees: [], // frisbee original position
+    offences: [], // offence original position
+    defences: [], // defence original position
   },
 
   onLoad: function(options){
     var that = this;
     var board_id = options.board_id;
     this.board_id = board_id;
+    wx.hideHomeButton(); // 隐藏左上角"返回"
 
     wx.request({
       url: common.server_url + '/boards/' + board_id,
@@ -64,44 +36,14 @@ Page({
           steps: common.steps(res.data[1]), // 获取步骤, common.js
           step_input_value: "",
           note: "Step 1. " + res.data[1][0].description,  // 第一步的描述
-          frisbee_x: status.frisbee_x,
-          frisbee_y: status.frisbee_y,
-          offence_1_x: status.offence_1_x,
-          offence_1_y: status.offence_1_y,
-          offence_2_x: status.offence_2_x,
-          offence_2_y: status.offence_2_y,
-          offence_3_x: status.offence_3_x,
-          offence_3_y: status.offence_3_y,
-          offence_4_x: status.offence_4_x,
-          offence_4_y: status.offence_4_y,
-          offence_5_x: status.offence_5_x,
-          offence_5_y: status.offence_5_y,
-          offence_6_x: status.offence_6_x,
-          offence_6_y: status.offence_6_y,
-          offence_7_x: status.offence_7_x,
-          offence_7_y: status.offence_7_y,
-          defence_1_x: status.defence_1_x,
-          defence_1_y: status.defence_1_y,
-          defence_2_x: status.defence_2_x,
-          defence_2_y: status.defence_2_y,
-          defence_3_x: status.defence_3_x,
-          defence_3_y: status.defence_3_y,
-          defence_4_x: status.defence_4_x,
-          defence_4_y: status.defence_4_y,
-          defence_5_x: status.defence_5_x,
-          defence_5_y: status.defence_5_y,
-          defence_6_x: status.defence_6_x,
-          defence_6_y: status.defence_6_y,
-          defence_7_x: status.defence_7_x,
-          defence_7_y: status.defence_7_y,
+          frisbees: status.frisbees,
+          offences: status.offences,
+          defences: status.defences
         })
       }
     })
   },
 
-  onShow: function(){
-    wx.hideHomeButton(); // 隐藏左上角"返回"
-  },
 
   // 所有步骤动画演示
   play: function(){
@@ -123,36 +65,9 @@ Page({
             that.setData({
               note: description,
               note_display: "block",
-              frisbee_x: status.frisbee_x,
-              frisbee_y: status.frisbee_y,
-              offence_1_x: status.offence_1_x,
-              offence_1_y: status.offence_1_y,
-              offence_2_x: status.offence_2_x,
-              offence_2_y: status.offence_2_y,
-              offence_3_x: status.offence_3_x,
-              offence_3_y: status.offence_3_y,
-              offence_4_x: status.offence_4_x,
-              offence_4_y: status.offence_4_y,
-              offence_5_x: status.offence_5_x,
-              offence_5_y: status.offence_5_y,
-              offence_6_x: status.offence_6_x,
-              offence_6_y: status.offence_6_y,
-              offence_7_x: status.offence_7_x,
-              offence_7_y: status.offence_7_y,
-              defence_1_x: status.defence_1_x,
-              defence_1_y: status.defence_1_y,
-              defence_2_x: status.defence_2_x,
-              defence_2_y: status.defence_2_y,
-              defence_3_x: status.defence_3_x,
-              defence_3_y: status.defence_3_y,
-              defence_4_x: status.defence_4_x,
-              defence_4_y: status.defence_4_y,
-              defence_5_x: status.defence_5_x,
-              defence_5_y: status.defence_5_y,
-              defence_6_x: status.defence_6_x,
-              defence_6_y: status.defence_6_y,
-              defence_7_x: status.defence_7_x,
-              defence_7_y: status.defence_7_y,
+              frisbees: status.frisbees,
+              offences: status.offences,
+              defences: status.defences
             });
             i += 1;
           };
@@ -176,36 +91,9 @@ Page({
         that.setData({
           note: description,
           note_display: "block",
-          frisbee_x: status.frisbee_x,
-          frisbee_y: status.frisbee_y,
-          offence_1_x: status.offence_1_x,
-          offence_1_y: status.offence_1_y,
-          offence_2_x: status.offence_2_x,
-          offence_2_y: status.offence_2_y,
-          offence_3_x: status.offence_3_x,
-          offence_3_y: status.offence_3_y,
-          offence_4_x: status.offence_4_x,
-          offence_4_y: status.offence_4_y,
-          offence_5_x: status.offence_5_x,
-          offence_5_y: status.offence_5_y,
-          offence_6_x: status.offence_6_x,
-          offence_6_y: status.offence_6_y,
-          offence_7_x: status.offence_7_x,
-          offence_7_y: status.offence_7_y,
-          defence_1_x: status.defence_1_x,
-          defence_1_y: status.defence_1_y,
-          defence_2_x: status.defence_2_x,
-          defence_2_y: status.defence_2_y,
-          defence_3_x: status.defence_3_x,
-          defence_3_y: status.defence_3_y,
-          defence_4_x: status.defence_4_x,
-          defence_4_y: status.defence_4_y,
-          defence_5_x: status.defence_5_x,
-          defence_5_y: status.defence_5_y,
-          defence_6_x: status.defence_6_x,
-          defence_6_y: status.defence_6_y,
-          defence_7_x: status.defence_7_x,
-          defence_7_y: status.defence_7_y,
+          frisbees: status.frisbees,
+          offences: status.offences,
+          defences: status.defences
         })
       }
     })

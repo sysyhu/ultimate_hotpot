@@ -72,10 +72,11 @@ page {
   box-shadow: 1rpx 1rpx 2rpx 2rpx rgba(0,0,0,0.05);
 }
 
-.offence, .defence{
+.offence{
   width: 40rpx;
   height: 40rpx;
   background-color: #E34F33;
+  border-radius: 50%;
   text-align: center;
   line-height: 40rpx;
   color: white;
@@ -84,7 +85,54 @@ page {
 }
 
 .defence {
+  width: 60rpx;
+  height: 60rpx;
+}
+
+.defence_body{
+  width: 40rpx;
+  height: 40rpx;
   background-color: #2B5B6C;
+  border-radius: 50%;
+  box-shadow: 1rpx 1rpx 2rpx 2rpx rgba(0,0,0,0.05);
+  text-align: center;
+  line-height: 40rpx;
+  color: white;
+  font-size: 24rpx;
+  position: absolute;
+  top: 10rpx;
+  left: 10rpx;
+  z-index: 1;
+}
+
+.defence_arm {
+  width: 60rpx;
+  height: 10rpx;
+  background-color: #2B5B6C;
+  position: absolute;
+  top: 25rpx;
+  left: 0rpx;
+  box-shadow: 1rpx 1rpx 2rpx 2rpx rgba(0,0,0,0.05);
+}
+
+.force_direction_ho {
+  transform: rotate(0deg);
+}
+
+.force_direction_v {
+  transform: rotate(90deg);
+}
+
+.force_direction_forehand {
+  transform: rotate(135deg);
+}
+
+.force_direction_backhand {
+  transform: rotate(45deg);
+}
+
+.force_direction_none {
+  display: none;
 }
 
 /* 场地侧边步骤操作播放、重置、完成等 */

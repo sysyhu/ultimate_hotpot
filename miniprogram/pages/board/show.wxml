@@ -2,29 +2,20 @@
 
 <view class="grass">
   <movable-area class="field">
+    <!-- field marks -->
     <view class="endzone_line endzone_line_1"></view>
     <view class="endzone_line endzone_line_2"></view>
     <image class="brick_mark brick_mark_1" src="../../images/brick_mark.png" mode="widthFix"></image>
     <image class="brick_mark brick_mark_2" src="../../images/brick_mark.png" mode="widthFix"></image>
     <!-- frisbee -->
-    <movable-view class="frisbee" direction="all" x="{{frisbee_x}}" y="{{frisbee_y}}" bindtouchend="position" disabled="{{true}}">HOTPOT</movable-view>
+    <movable-view class="frisbee {{item.name}}" id="{{item.name}}" wx:for="{{frisbees}}" x="{{item.x}}" y="{{item.y}}" direction="all" bindtouchend="position">HOTPOT</movable-view>
     <!-- offence -->
-    <movable-view class="offence offence_1" x="{{offence_1_x}}" y="{{offence_1_y}}" direction="all" bindtouchend="position" disabled="{{true}}">1</movable-view>
-    <movable-view class="offence offence_2" x="{{offence_2_x}}" y="{{offence_2_y}}" direction="all" bindtouchend="position" disabled="{{true}}">2</movable-view>
-    <movable-view class="offence offence_3" x="{{offence_3_x}}" y="{{offence_3_y}}" direction="all" bindtouchend="position" disabled="{{true}}">3</movable-view>
-    <movable-view class="offence offence_4" x="{{offence_4_x}}" y="{{offence_4_y}}" direction="all" bindtouchend="position" disabled="{{true}}">4</movable-view>
-    <movable-view class="offence offence_5" x="{{offence_5_x}}" y="{{offence_5_y}}" direction="all" bindtouchend="position" disabled="{{true}}">5</movable-view>
-    <movable-view class="offence offence_6" x="{{offence_6_x}}" y="{{offence_6_y}}" direction="all" bindtouchend="position" disabled="{{true}}">6</movable-view>
-    <movable-view class="offence offence_7" x="{{offence_7_x}}" y="{{offence_7_y}}" direction="all" bindtouchend="position" disabled="{{true}}">7</movable-view>
-
+    <movable-view class="offence {{item.name}}" id="{{item.name}}" wx:for="{{offences}}" x="{{item.x}}" y="{{item.y}}" direction="all" bindtouchend="position">{{item.num}}</movable-view>
     <!-- defence -->
-    <movable-view class="defence defence_1" x="{{defence_1_x}}" y="{{defence_1_y}}" direction="all" bindtouchend="position" disabled="{{true}}">1</movable-view>
-    <movable-view class="defence defence_2" x="{{defence_2_x}}" y="{{defence_2_y}}" direction="all" bindtouchend="position" disabled="{{true}}">2</movable-view>
-    <movable-view class="defence defence_3" x="{{defence_3_x}}" y="{{defence_3_y}}" direction="all" bindtouchend="position" disabled="{{true}}">3</movable-view>
-    <movable-view class="defence defence_4" x="{{defence_4_x}}" y="{{defence_4_y}}" direction="all" bindtouchend="position" disabled="{{true}}">4</movable-view>
-    <movable-view class="defence defence_5" x="{{defence_5_x}}" y="{{defence_5_y}}" direction="all" bindtouchend="position" disabled="{{true}}">5</movable-view>
-    <movable-view class="defence defence_6" x="{{defence_6_x}}" y="{{defence_6_y}}" direction="all" bindtouchend="position" disabled="{{true}}">6</movable-view>
-    <movable-view class="defence defence_7" x="{{defence_7_x}}" y="{{defence_7_y}}" direction="all" bindtouchend="position" disabled="{{true}}">7</movable-view>
+    <movable-view class="defence {{item.name}}" id="{{item.name}}" wx:for="{{defences}}" x="{{item.x}}" y="{{item.y}}" direction="all" bindtouchend="position" bindtap="change_force_direction" data-force_direction="{{item.force_direction}}">
+      <view class="defence_body">{{item.num}}</view>
+      <view class="defence_arm {{item.force_direction}}" id="{{item.name}}" ></view>
+    </movable-view>
   </movable-area> 
 </view>
 
