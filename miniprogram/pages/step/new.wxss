@@ -15,6 +15,53 @@
 /* .operate_steps
 .operate_button */
 
+/* play 时第一步动画 */
+@keyframes flash {
+  0% {
+    box-shadow: none;
+  }
+  100% {
+    box-shadow: 0 0 40rpx rgb(255, 255, 255);
+  }
+}
+
+.sideline_area {
+  position: absolute;
+  top: 325rpx;
+  left: 660rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.sideline_defence {
+  width: 40rpx;
+  height: 40rpx;
+  background-color: #2B5B6C;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 40rpx;
+  color: white;
+  font-size: 24rpx;
+  box-shadow: 1rpx 1rpx 2rpx 2rpx rgba(0,0,0,0.05);
+}
+
+.on_field {
+  display: block;
+}
+
+.on_sideline {
+  display: none;
+}
+
+.sideline_helper {
+  display: block
+}
+
+.sideline_no_helper {
+  display: none
+}
+
 /* 具体 .operate_button 的细节 */
 .play {
   padding: 15rpx;

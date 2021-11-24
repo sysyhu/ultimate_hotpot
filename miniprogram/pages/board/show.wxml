@@ -8,18 +8,27 @@
     <image class="brick_mark brick_mark_1" src="../../images/brick_mark.png" mode="widthFix"></image>
     <image class="brick_mark brick_mark_2" src="../../images/brick_mark.png" mode="widthFix"></image>
     <!-- frisbee -->
-    <movable-view class="frisbee {{item.name}}" id="{{item.name}}" wx:for="{{frisbees}}" x="{{item.x}}" y="{{item.y}}" direction="all" bindtouchend="position">HOTPOT</movable-view>
+    <movable-view  wx:for="{{frisbees}}" id="{{item.name}}" class="frisbee {{item.name}} {{item.on_field}}" x="{{item.x}}" y="{{item.y}}" direction="all" animation="{{item.animation}}">HOTPOT</movable-view>
     <!-- offence -->
-    <movable-view class="offence {{item.name}}" id="{{item.name}}" wx:for="{{offences}}" x="{{item.x}}" y="{{item.y}}" direction="all" bindtouchend="position">{{item.num}}</movable-view>
+    <movable-view wx:for="{{offences}}" id="{{item.name}}" class="offence {{item.name}} {{item.on_field}}" x="{{item.x}}" y="{{item.y}}" direction="all" animation="{{item.animation}}">{{item.num}}</movable-view>
     <!-- defence -->
-    <movable-view class="defence {{item.name}}" id="{{item.name}}" wx:for="{{defences}}" x="{{item.x}}" y="{{item.y}}" direction="all" bindtouchend="position" bindtap="change_force_direction" data-force_direction="{{item.force_direction}}">
+    <movable-view wx:for="{{defences}}" id="{{item.name}}" class="defence {{item.name}} {{item.on_field}}" x="{{item.x}}" y="{{item.y}}" direction="all" animation="{{item.animation}}" data-force_direction="{{item.force_direction}}">
       <view class="defence_body">{{item.num}}</view>
-      <view class="defence_arm {{item.force_direction}}" id="{{item.name}}" ></view>
+      <view class="defence_arm {{item.force_direction}}"></view>
     </movable-view>
-  </movable-area> 
-</view>
+  </movable-area>
+</view> 
 
-<view class="field_strech"></view>
+<view class="sideline_area">
+  {{sideline}}
+  <!-- offence -->
+  <view wx:for="{{offences}}" class="offence {{item.name}} {{item.sideline_helper}}" id="{{item.name}}">{{item.num}}</view>
+  <!-- frisbee -->
+  <view  wx:for="{{frisbees}}" class="frisbee {{item.name}} {{item.sideline_helper}}" id="{{item.name}}">HOTPOT</view>
+  <!-- defence -->
+  <view wx:for="{{defences}}" class="sideline_defence {{item.name}} {{item.sideline_helper}}" id="{{item.name}}">{{item.num}}
+  </view>
+</view>
 
 <view class="operate_steps">
   <!-- <image class="create" bindtap="create" src="../../images/create.png"></image> -->
@@ -34,7 +43,7 @@
 
   <view class="step_index">
     <view class="a_step" wx:for="{{steps}}" wx:key="item">
-      <view class="a_step_description">{{item.a_step}}</view>
+      <view class="a_step_description">{{item.a_step_description}}</view>
       <image class="operate_button play_a_step" bindtap="play_a_step" src="../../images/play.png" data-step_id="{{item.step_id}}"></image>
     </view>
     <view class="line"></view>

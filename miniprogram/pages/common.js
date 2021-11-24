@@ -28,17 +28,17 @@ function steps(step_data){
     }else{
       str = "Step " + step_order + ". " + data[i].description;
     }
-    steps[i] = {a_step: str, step_id: step_id};
+    steps[i] = {a_step_description: str, step_id: step_id};
   };
   return steps
 };
 
 // 步骤创建页，生成飞盘、队员坐标
-function original_position(x_list, y, name, force_direction){
+function original_status( name, x_list, y, force_direction, on_field, sideline_helper, animation){
   var position_list = [];
   for(var i=0; i<x_list.length; i++){
     var num = i + 1;
-    position_list[i] = {num: num, x: x_list[i], y: y, name: name + "_" + num, force_direction: force_direction}
+    position_list[i] = {name: name + "_" + num, num: num, x: x_list[i], y: y, force_direction: force_direction, on_field: on_field, sideline_helper: sideline_helper, animation: animation}
   }
   return position_list
 };
@@ -47,5 +47,5 @@ module.exports = {
   server_url: server_url,
   boards: boards,
   steps: steps,
-  original_position: original_position,
+  original_status: original_status,
 }

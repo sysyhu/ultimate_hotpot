@@ -58,16 +58,37 @@ Page({
         var i = 0;
         var interval = 1500;
         setInterval(function(){
-          if(i < len){
+          if(i == 0){
+            // highlight 第一步, 方法待定;
             var status = JSON.parse(data[i]["status"]);
-            var step_order = i + 1;
-            var description = "Step " + step_order + ". " + data[i].description;
             that.setData({
-              note: description,
-              note_display: "block",
               frisbees: status.frisbees,
               offences: status.offences,
-              defences: status.defences
+              defences: status.defences,
+            });
+            i += 1;
+          }else if(i != 0 && i < len){
+            var status = JSON.parse(data[i]["status"]);
+            var last_status = JSON.parse(data[i-1]["status"]);
+            for(var n=0; n<last_status["frisbees"].length; n++){
+              if(last_status["frisbees"][n]["on_field"] != "on_sideline"){
+                status["frisbees"][n]["animation"] = true
+              };
+            };
+            for(var n=0; n<last_status["offences"].length; n++){
+              if(last_status["offences"][n]["on_field"] != "on_sideline"){
+                status["offences"][n]["animation"] = true
+              };
+            };
+            for(var n=0; n<last_status["defences"].length; n++){
+              if(last_status["defences"][n]["on_field"] != "on_sideline"){
+                status["defences"][n]["animation"] = true
+              };
+            };
+            that.setData({
+              frisbees: status.frisbees,
+              offences: status.offences,
+              defences: status.defences,
             });
             i += 1;
           };
